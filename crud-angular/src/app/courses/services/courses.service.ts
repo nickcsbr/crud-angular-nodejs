@@ -9,7 +9,7 @@ import { Course } from '../model/course';
 })
 export class CoursesService {
 
-  private readonly API = '/assets/courskes.json';
+  private readonly API = '/assets/courses.json';
 
   constructor(
     private httpClient: HttpClient,
@@ -18,8 +18,8 @@ export class CoursesService {
   list() {
     return this.httpClient.get<Course[]>(this.API)
     .pipe(
-      first(),
       delay(1500),
+      first(),      
       tap(courses => console.log(courses))
     );
   }
